@@ -1,0 +1,142 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Appointment System</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: #fff;
+            border-bottom: 2px solid #ccc;
+            margin: 0;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .login-btn {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: url('background-image.jpg') no-repeat center;
+            background-size: cover;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            color: white;
+            z-index: 1;
+        }
+
+        .highlight {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        .buttons button {
+            margin: 10px;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .primary-btn {
+            background: black;
+            color: white;
+        }
+
+        .secondary-btn {
+            background: white;
+            color: black;
+            border: 2px solid black;
+        }
+
+        .info {
+            background: black;
+            color: white;
+            padding: 20px;
+        }
+
+        .footer {
+            padding: 20px;
+        }
+
+    </style>
+    <script>
+        function bookAppointment() {
+            alert("Redirecting to the appointment booking page...");
+        }
+
+        function checkStatus() {
+            alert("Checking appointment status...");
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">LB</div>
+        <button class="login-btn">LOGIN</button>
+    </header>
+
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Scheduling convenience for <span class="highlight">everyone.</span></h1>
+            <p>Easily book and manage your barangay appointments without the hassle of long lines.</p>
+            <div class="buttons">
+                <button class="primary-btn">BOOK APPOINTMENT NOW</button>
+                <button class="secondary-btn">CHECK APPOINTMENT STATUS</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="info">
+        <p>Schedule barangay appointments without the back-and-forth hassle.</p>
+    </section>
+
+    <section class="footer">
+        <p>Everything you need for scheduling</p>
+        <div class="contact">Contact us: 09xx-xxxxxxx</div>
+    </section>
+</body>
+</html>

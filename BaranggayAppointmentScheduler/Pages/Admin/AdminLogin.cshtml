@@ -1,0 +1,37 @@
+﻿@page
+@model BaranggayAppointmentScheduler.Pages.Admin.AdminLoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="~/css/admin-login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form method="post" asp-action="Login" asp-controller="Admin">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="Username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="Password" required>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+        {
+            <p class="error-message">@ViewData["ErrorMessage"]</p>
+        }
+    </div>
+</body>
+</html>
