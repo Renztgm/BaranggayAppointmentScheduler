@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using BaranggayAppointmentScheduler.Models; // Ensure the correct namespace for Models
-
+using BaranggayAppointmentScheduler.Models;
 namespace BaranggayAppointmentScheduler.Data
 {
     public class ApplicationDbContext : DbContext
@@ -12,5 +11,10 @@ namespace BaranggayAppointmentScheduler.Data
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<BusinessAppointment> BusinessAppointments { get; set; }
+        public DbSet<GeneralAppointment> GeneralAppointments { get; set; }
+        public DbSet<HealthAppointment> HealthAppointments { get; set; }
+        public DbSet<NonResidentAppointment> NonResidentAppointments { get; set; }
+        public DbSet<ReportsAppointment> ReportsAppointments { get; set; }
     }
 }

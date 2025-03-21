@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using BaranggayAppointmentScheduler.Data;
 using BaranggayAppointmentScheduler.Models;
+using BaranggayAppointmentScheduler.Data;
 
 namespace BaranggayAppointmentScheduler.Pages.User
 {
