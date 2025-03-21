@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using BaranggayAppointmentScheduler.Data;  // ✅ Ensure this is correct
-using BaranggayAppointmentScheduler.Models; // ✅ Add this to reference your models
+using BaranggayAppointmentScheduler.Models;
+using BaranggayAppointmentScheduler.Data;
 
 namespace BaranggayAppointmentScheduler.Pages.Admin
 {
