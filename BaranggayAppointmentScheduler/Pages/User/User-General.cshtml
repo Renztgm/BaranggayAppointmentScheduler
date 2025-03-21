@@ -1,0 +1,138 @@
+﻿@page
+@model BaranggayAppointmentScheduler.Pages.User.User_GeneralModel
+@{
+    Layout = "_Layout";
+    DateTime today = DateTime.Today;
+    int daysUntilMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
+    DateTime monday = today.AddDays(daysUntilMonday);
+    string[] weekdays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+}
+<head>
+    <link rel="stylesheet" href="~/css/User-General.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <h2>General Appointment</h2>
+        <div class="dashboard">
+            <div class="appointment-form">
+                <h3>What is your concern?</h3>
+                <select>
+                    <option>Select a concern</option>
+                    <option>Barangay ID</option>
+                    <option>Certificate of Indigency</option>
+                    <option>Barangay Clearance</option>
+                </select>
+                <input type="text" id="selectedDateTime" placeholder="Choose date and time" readonly>
+                <button id="openSchedule">Select Date & Time</button>
+                <input type="text" placeholder="Phone Number">
+                <textarea placeholder="More Details about your concern"></textarea>
+                <button class="book-btn">Book</button>
+            </div>
+            <div class="history">
+                <h4>History</h4>
+                <div class="history-item">
+                    <p><strong>January 17, 2025</strong></p>
+                    <p>Barangay ID - <span class="id-number">99726632845</span></p>
+                </div>
+                <div class="history-item">
+                    <p><strong>November 10, 2024</strong></p>
+                    <p>Certificate of Indigency - <span class="id-number">88927874664</span></p>
+                </div>
+                <div class="history-item">
+                    <p><strong>August 09, 2024</strong></p>
+                    <p>Barangay Clearance - <span class="id-number">6882664824</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schedule Modal -->
+         <div id="scheduleModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Select a Date, Day, and Time Slot</h3>
+                <button id="prevWeek">Previous Week</button>
+                <button id="nextWeek">Next Week</button>
+                <table class="schedule-table">
+                    <thead>
+                        <tr id="weekdaysHeader">
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentWeekOffset = 0;
+        const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+        const timeSlots = ["8:00-9:00am", "9:00-10:00am", "10:00-11:00am", "11:00-12:00nn", "1:00-2:00pm", "2:00-3:00pm", "3:00-4:00pm", "4:00-5:00pm"];
+
+        function updateSchedule() {
+            let today = new Date();
+            let daysUntilMonday = (1 - today.getDay() + 7) % 7; 
+            let monday = new Date(today.setDate(today.getDate() + daysUntilMonday + (currentWeekOffset * 7)));
+
+            let headerRow = document.getElementById("weekdaysHeader");
+            let scheduleBody = document.getElementById("scheduleBody");
+            headerRow.innerHTML = "";
+            scheduleBody.innerHTML = "";
+
+            for (let i = 0; i < 5; i++) {
+                let date = new Date(monday);
+                date.setDate(date.getDate() + i);
+                let formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+                let th = document.createElement("th");
+                th.textContent = `${formattedDate}\n${weekdays[i]}`;
+                th.setAttribute("data-date", formattedDate);
+                headerRow.appendChild(th);
+            }
+
+            for (let i = 0; i < timeSlots.length; i++) {
+                let row = document.createElement("tr");
+                for (let j = 0; j < 5; j++) {
+                    let td = document.createElement("td");
+                    td.classList.add("time-slot");
+                    td.setAttribute("data-day", j);
+                    td.setAttribute("data-time", timeSlots[i]);
+                    td.textContent = timeSlots[i];
+                    row.appendChild(td);
+                }
+                scheduleBody.appendChild(row);
+            }
+
+            document.querySelectorAll(".time-slot").forEach(slot => {
+                slot.addEventListener("click", function() {
+                    let dayIndex = this.getAttribute("data-day");
+                    let time = this.getAttribute("data-time");
+                    let selectedDate = document.querySelector(`#weekdaysHeader th:nth-child(${parseInt(dayIndex) + 1})`).getAttribute("data-date");
+                    
+                    document.getElementById("selectedDateTime").value = `${selectedDate} (${weekdays[dayIndex]}) ${time}`;
+                    document.getElementById("scheduleModal").style.display = "none";
+                });
+            });
+        }
+
+        document.getElementById("openSchedule").addEventListener("click", function() {
+            document.getElementById("scheduleModal").style.display = "block";
+            updateSchedule();
+        });
+
+        document.querySelector(".close").addEventListener("click", function() {
+            document.getElementById("scheduleModal").style.display = "none";
+        });
+
+        document.getElementById("prevWeek").addEventListener("click", function() {
+            currentWeekOffset--;
+            updateSchedule();
+        });
+
+        document.getElementById("nextWeek").addEventListener("click", function() {
+            currentWeekOffset++;
+            updateSchedule();
+        });
+
+    </script>
+</body>

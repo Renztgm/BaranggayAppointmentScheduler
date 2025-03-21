@@ -1,0 +1,168 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 100%;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    background-color: #F4F4F4;
+    border-radius: 10px;
+    position: relative;
+}
+
+    .dashboard::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: black;
+        transform: translateX(-100%);
+    }
+
+.appointment-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 20px;
+}
+
+    .appointment-form input, .appointment-form select, .appointment-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.book-btn {
+    background: yellow;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.history {
+    flex: 1;
+    margin-left: 30px;
+    background-color: #F4F4F4;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.history-item {
+    background: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.id-number {
+    color: red;
+    font-weight: bold;
+}
+
+h3, h4 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 60%;
+    border-radius: 10px;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+    .schedule-table th, .schedule-table td {
+        border: 2px solid black;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #fff;
+    }
+
+    .schedule-table th {
+        background-color: #F6F3C5;
+        color: black;
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .schedule-table td:hover {
+        background-color: lightblue;
+    }
+    #openSchedule {
+    background-color: yellow;
+    color: black ;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    }
+
+    #openSchedule:hover {
+        background-color: #BFC93D;
+    }
+
+#nextWeek {
+    margin-left: 750px; /* Pushes it to the right */
+    background: yellow;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+#prevWeek {
+    background: yellow;
+    padding: 5px 10px;
+    border-radius: 10px;
+}

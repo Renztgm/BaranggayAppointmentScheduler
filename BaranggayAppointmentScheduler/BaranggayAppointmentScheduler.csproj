@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\User-General.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\css\admin-login.css" />
   </ItemGroup>
 
