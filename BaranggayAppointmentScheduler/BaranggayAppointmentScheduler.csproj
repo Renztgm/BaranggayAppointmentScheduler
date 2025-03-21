@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\User\" />
+    <None Include="wwwroot\css\admin-login.css" />
   </ItemGroup>
 
   <ItemGroup>

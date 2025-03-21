@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using BaranggayAppointmentScheduler.Data;
 
@@ -17,6 +17,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 );
 builder.Services.AddSession();
 
+builder.Services.AddHttpContextAccessor();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +29,8 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
+
+app.UseStaticFiles(); // ✅ Allows serving CSS, JS, images, etc.
 
 app.UseHttpsRedirection();
 app.UseRouting();

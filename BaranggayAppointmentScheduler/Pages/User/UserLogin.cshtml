@@ -1,0 +1,40 @@
+﻿@page
+@model BaranggayAppointmentScheduler.Pages.User.UserLoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<head>
+    <link rel="stylesheet" href="~/css/user-login.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Section -->
+        <div class="login-section">
+            <h2>Log in With</h2>
+            <div class="social-icons">
+                <button class="social-btn">🔵</button>
+                <button class="social-btn">🔗</button>
+            </div>
+            <p>or use your Email</p>
+
+            <!-- FORM: Connects to the backend -->
+            <form method="post">
+                <label>Email</label>
+                <input type="email" asp-for="Username" placeholder="Enter your email" required>
+                <label>Password</label>
+                <input type="password" asp-for="Password" placeholder="Enter your password" required>
+                <span class="error">@Model.ErrorMessage</span> <!-- Display error messages -->
+                <a href="#">Forgot your password?</a>
+                <button type="submit" class="btn">LOG IN</button>
+            </form>
+        </div>
+
+        <!-- Signup Section -->
+        <div class="signup-section">
+            <h2>Hi There!</h2>
+            <p>If you don't have an account, you can Sign Up here!</p>
+            <a asp-page="/User/SignUp" class="btn">SIGN UP</a>
+        </div>
+    </div>
+</body>

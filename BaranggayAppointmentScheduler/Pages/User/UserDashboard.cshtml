@@ -1,0 +1,191 @@
+﻿@page
+@model BaranggayAppointmentScheduler.Pages.User.UserDashboardModel
+@{
+	Layout = "_Layout";
+}
+<head>
+    <style>
+        <style >
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            }
+
+        .title {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .chart-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+            .chart-box h3 {
+                margin-bottom: 10px;
+            }
+
+        .updates {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .update {
+            width: 100%;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border: none;
+            text-align: left;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            .update:hover {
+                background: #f0f0f0;
+            }
+
+        .general {
+            background: #f9f871;
+        }
+
+        .health {
+            background: #e0e0e0;
+        }
+
+        .report {
+            background: #bfbfbf;
+        }
+
+        .negative {
+            color: green;
+            font-weight: bold;
+        }
+
+        .positive {
+            color: red;
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 12px;
+            color: #555;
+            display: block;
+            margin-top: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Home</h2>
+
+        <div class="card-container">
+            <button class="card" onclick="alert('General Button Clicked!')">
+                <i class="fas fa-id-card"></i>
+                <p>Need Barangay ID?</p>
+            </button>
+            <button class="card" onclick="alert('Health Button Clicked!')">
+                <i class="fas fa-notes-medical"></i>
+                <p>Check Up?</p>
+            </button>
+            <button class="card" onclick="alert('Report Button Clicked!')">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Complaint?</p>
+            </button>
+            <button class="card" onclick="alert('Business Button Clicked!')">
+                <i class="fas fa-briefcase"></i>
+                <p>Business Permit?</p>
+            </button>
+        </div>
+
+
+        <h2>Updates</h2>
+        <div class="updates">
+            <button class="update general" onclick="alert('General Update Clicked!')">
+                <strong>General</strong>
+                <p>Your ID is ready, please bring a ballpen, any ID with your name and address, and the receipt you have received.</p>
+                <span class="date">12/12/2024</span>
+            </button>
+            <button class="update health" onclick="alert('Health Update Clicked!')">
+                <strong>Health</strong>
+                <p>Your test result is ready to claim, please get your test result before 5:00pm today.</p>
+                <span class="date">08/01/2024</span>
+            </button>
+            <button class="update report" onclick="alert('Report Update Clicked!')">
+                <strong>Report</strong>
+                <p>We already received your complaint and we're taking action at the moment.</p>
+                <span class="date">07/23/2024</span>
+            </button>
+            <button class="update health" onclick="alert('Health Alert Clicked!')">
+                <strong>Health</strong>
+                <p>Based on your test result, you are <span class="negative">NEGATIVE</span> to TB DOTS but unfortunately, you are <span class="positive">POSITIVE</span> to HIV.</p>
+                <span class="date">01/12/2025</span>
+            </button>
+        </div>
+
+    </div>
+</body>

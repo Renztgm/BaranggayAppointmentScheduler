@@ -1,0 +1,110 @@
+﻿/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+}
+
+/* Container */
+.container {
+    display: flex;
+    width: 70%; /* Increased width */
+    height: 70%; /* Increased height */
+    background: linear-gradient(to right, #f5f8e7, #e6e8d3);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Sections */
+.login-section, .signup-section {
+    width: 50%;
+    padding: 50px; /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Login Section */
+.login-section {
+    background: #f5f8e7;
+}
+
+h2 {
+    font-size: 28px; /* Increased heading size */
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px; /* Increased text size */
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px; /* Increased spacing */
+    margin-bottom: 15px;
+}
+
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased spacing */
+    width: 100%;
+    max-width: 300px; /* Increased width */
+}
+
+label {
+    font-size: 18px; /* Bigger labels */
+    font-weight: bold;
+}
+
+input {
+    padding: 12px; /* Bigger padding */
+    font-size: 18px; /* Bigger text */
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 8px;
+}
+
+a {
+    font-size: 16px; /* Increased text size */
+    color: #555;
+    text-decoration: none;
+}
+
+.btn {
+    margin-top: 15px;
+    padding: 12px 25px; /* Bigger buttons */
+    font-size: 18px; /* Bigger text */
+    border: 2px solid black;
+    background: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+    .btn:hover {
+        background: black;
+        color: white;
+    }
+
+/* Signup Section */
+.signup-section {
+    background: #e6e8d3;
+}

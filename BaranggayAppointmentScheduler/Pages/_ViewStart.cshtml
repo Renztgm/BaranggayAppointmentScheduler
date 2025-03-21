@@ -1,3 +1,12 @@
 ﻿@{
-    Layout = "_Layout";
+    // Ensure correct layout usage
+    var path = Context.Request.Path.Value.ToLower();
+    if (User.Identity.IsAuthenticated && path != "/index")
+    {
+        Layout = "/Pages/Shared/_Layout.cshtml"; // ✅ Corrected path
+    }
+    else
+    {
+        Layout = null; // No layout for unauthenticated users or landing page
+    }
 }

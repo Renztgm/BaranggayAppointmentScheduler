@@ -11,5 +11,6 @@ namespace BaranggayAppointmentScheduler.Data
         }
 
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -1,14 +1,10 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Landing Page";
 }
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barangay Appointment System</title>
     <style>
         *{
@@ -115,7 +111,7 @@
 <body>
     <header>
         <div class="logo">LB</div>
-        <button class="login-btn">LOGIN</button>
+        <button class="login-btn" onclick="window.location.href='/User/UserLogin'">LOGIN</button>
     </header>
 
     <section class="hero">
@@ -124,7 +120,7 @@
             <h1>Scheduling convenience for <span class="highlight">everyone.</span></h1>
             <p>Easily book and manage your barangay appointments without the hassle of long lines.</p>
             <div class="buttons">
-                <button class="primary-btn">BOOK APPOINTMENT NOW</button>
+                <button class="primary-btn" onclick="window.location.href='/User/UserLogin'">BOOK APPOINTMENT NOW</button>
                 <button class="secondary-btn">CHECK APPOINTMENT STATUS</button>
             </div>
         </div>
@@ -139,4 +135,3 @@
         <div class="contact">Contact us: 09xx-xxxxxxx</div>
     </section>
 </body>
-</html>

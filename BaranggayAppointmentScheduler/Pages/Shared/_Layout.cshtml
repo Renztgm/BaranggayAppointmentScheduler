@@ -1,52 +1,50 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BaranggayAppointmentScheduler</title>
-    <script type="importmap"></script>
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
-    @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
-    @* <link rel="stylesheet" href="~/BaranggayAppointmentScheduler.styles.css" asp-append-version="true" /> *@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Baranggay Appointment Scheduler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    @* <header> *@
-    @*     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"> *@
-    @*         <div class="container"> *@
-    @*             <a class="navbar-brand" asp-area="" asp-page="/Index">BaranggayAppointmentScheduler</a> *@
-    @*             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" *@
-    @*                     aria-expanded="false" aria-label="Toggle navigation"> *@
-    @*                 <span class="navbar-toggler-icon"></span> *@
-    @*             </button> *@
-    @*             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between"> *@
-    @*                 <ul class="navbar-nav flex-grow-1"> *@
-    @*                     <li class="nav-item"> *@
-    @*                         <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a> *@
-    @*                     </li> *@
-    @*                     <li class="nav-item"> *@
-    @*                         <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a> *@
-    @*                     </li> *@
-    @*                 </ul> *@
-    @*             </div> *@
-    @*         </div> *@
-    @*     </nav> *@
-    @* </header> *@
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar (Sticky) -->
+        <aside class="w-64 bg-gray-900 text-white p-5 h-screen fixed left-0 top-0">
+            <h2 class="text-2xl font-bold mb-6">Queueless</h2>
+            <nav>
+                <ul>
+                    <li class="mb-3"><a asp-page="/Index" class="flex items-center p-2 rounded hover:bg-gray-700">🏠 Home</a></li>
+                    <li class="mb-3"><a asp-page="/Contacts" class="flex items-center p-2 rounded hover:bg-gray-700">📞 Contacts</a></li>
+                    <li class="mb-3"><a asp-page="/Feedback" class="flex items-center p-2 rounded hover:bg-gray-700">✉️ Feedback</a></li>
+                    <li class="mb-3"><a asp-page="/Settings" class="flex items-center p-2 rounded hover:bg-gray-700">⚙️ Settings</a></li>
+                    <li class="mb-3"><a asp-page="/Logout" class="flex items-center p-2 rounded hover:bg-red-600">🚪 Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <!-- Top Bar (Fixed) -->
+            <div class="bg-white shadow-md p-4 fixed top-0 left-64 right-0 z-50 flex justify-between items-center">
+                <h1 class="text-3xl font-bold">@ViewData["Title"]</h1>
+                <div class="flex items-center gap-4">
+                    <span class="text-gray-700">Rahul Shaw</span>
+                    <img src="https://via.placeholder.com/40" alt="Profile" class="rounded-full">
+                </div>
+            </div>
+
+            <!-- Page Content -->
+            <div class="mt-20 p-8">
+                <main role="main" class="pb-3">
+                    @RenderBody() <!-- ✅ Ensures page content is rendered -->
+                </main>
+            </div>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - BaranggayAppointmentScheduler - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
-
-    @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
-    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
-    @* <script src="~/js/site.js" asp-append-version="true"></script> *@
-
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
