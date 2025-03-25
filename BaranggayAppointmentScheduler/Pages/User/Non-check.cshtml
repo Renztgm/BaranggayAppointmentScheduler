@@ -2,86 +2,133 @@
 @model BaranggayAppointmentScheduler.Pages.User.User_GeneralModel
 @{
     DateTime today = DateTime.Today;
-    int daysUntilMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
-    DateTime monday = today.AddDays(daysUntilMonday);
-    string[] weekdays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 }
 <head>
-    <link rel="stylesheet" href="~/css/User-General.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Non-check.css" asp-append-version="true" />
     <style>
-        .appointment-card {
-            background: white;
+      
+
+        .appointment-info {
             padding: 15px;
-            margin: 10px 100px;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background: #f9f9f9;
         }
 
-            .appointment-card strong {
-                display: block;
+            .appointment-info p {
                 font-size: 16px;
-                margin-bottom: 5px;
+                margin: 8px 0;
             }
 
-            .appointment-card span {
-                font-size: 14px;
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .details-button {
+            display: block;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+            .details-button:hover {
+                background-color: #0056b3;
             }
 
-        .appointment-list {
-            list-style-type: none;
-            padding: 0;
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
         }
-        h2 {
-            margin: 10px 60px;
-            margin-top: 60px;
+
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .close:hover {
+                color: black;
+            }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Your Appointments</h2>
-        <ul class="appointment-list" id="appointmentList">
-            <!-- Appointments will be dynamically loaded here -->
-        </ul>
+        <h2>Non-Resident Appointment Information</h2>
+
+        <div class="appointment-info">
+            <p><span class="info-label">Tracking Number:</span> <span id="trackingNumber"></span></p>
+            <p><span class="info-label">Date:</span> <span id="appointmentDate"></span></p>
+            <p><span class="info-label">Time:</span> <span id="appointmentTime"></span></p>
+            <p><span class="info-label">Concern:</span> <span id="appointmentConcern" style="color: red; font-weight: bold;"></span></p>
+            <button class="details-button" id="viewDetails">More Details</button>
+        </div>
 
         <!-- Appointment Details Modal -->
         <div id="appointmentDetailsModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h3>Appointment Details</h3>
-                <p><strong>Date:</strong> <span id="appointmentDate"></span></p>
-                <p><strong>Time:</strong> <span id="appointmentTime"></span></p>
-                <p><strong>Concern:</strong> <span id="appointmentConcern"></span></p>
+                <p><strong>Tracking Number:</strong> <span id="modalTrackingNumber"></span></p>
+                <p><strong>Date:</strong> <span id="modalAppointmentDate"></span></p>
+                <p><strong>Time:</strong> <span id="modalAppointmentTime"></span></p>
+                <p><strong>Concern:</strong> <span id="modalAppointmentConcern"></span></p>
+                <p><strong>More Details:</strong> <span id="modalAppointmentDetails"></span></p>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            let appointments = [
-                { date: "March 27, 2025", time: "10:00-11:00am", concern: "Barangay ID" },
-                { date: "March 29, 2025", time: "2:00-3:00pm", concern: "Certificate of Indigency" }
-            ];
+            let appointment = {
+                trackingNumber: "NR-20250327-001",
+                date: "March 27, 2025",
+                time: "10:00-11:00am",
+                concern: "Barangay Clearance",
+                details: "Please bring two valid IDs and proof of address. Processing takes 15 minutes."
+            };
 
-            let appointmentList = document.getElementById("appointmentList");
+            document.getElementById("trackingNumber").textContent = appointment.trackingNumber;
+            document.getElementById("appointmentDate").textContent = appointment.date;
+            document.getElementById("appointmentTime").textContent = appointment.time;
+            document.getElementById("appointmentConcern").textContent = appointment.concern;
+
             let modal = document.getElementById("appointmentDetailsModal");
+            let viewDetailsBtn = document.getElementById("viewDetails");
             let closeModal = document.querySelector(".close");
 
-            appointments.forEach((appointment, index) => {
-                let li = document.createElement("li");
-                li.classList.add("appointment-card");
-                li.innerHTML = `
-                    <strong>${appointment.date}</strong>
-                    <span>${appointment.time} - <span style="color: red; font-weight: bold;">${appointment.concern}</span></span>
-                `;
-                li.setAttribute("data-index", index);
-                li.addEventListener("click", function () {
-                    document.getElementById("appointmentDate").textContent = appointment.date;
-                    document.getElementById("appointmentTime").textContent = appointment.time;
-                    document.getElementById("appointmentConcern").textContent = appointment.concern;
-                    modal.style.display = "block";
-                });
-                appointmentList.appendChild(li);
+            viewDetailsBtn.addEventListener("click", function () {
+                document.getElementById("modalTrackingNumber").textContent = appointment.trackingNumber;
+                document.getElementById("modalAppointmentDate").textContent = appointment.date;
+                document.getElementById("modalAppointmentTime").textContent = appointment.time;
+                document.getElementById("modalAppointmentConcern").textContent = appointment.concern;
+                document.getElementById("modalAppointmentDetails").textContent = appointment.details;
+                modal.style.display = "block";
             });
 
             closeModal.addEventListener("click", function () {

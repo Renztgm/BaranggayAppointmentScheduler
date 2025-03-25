@@ -3,16 +3,19 @@
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
+    align-content: center
 }
 
 .container {
     max-width: 100%;
+    margin-top: 100px;
     padding: 20px;
 }
 
 h2 {
     font-size: 40px;
     font-weight: bold;
+    margin-top:0px;
     margin-bottom: 20px;
     color: #007bff;
 }
@@ -157,7 +160,7 @@ h3, h4 {
     }
 
 #nextWeek {
-      margin-left: 865px; /* Pushes it to the right */
+    margin-left: 865px; /* Pushes it to the right */
     background: yellow;
     padding: 5px 10px;
     border-radius: 10px;
