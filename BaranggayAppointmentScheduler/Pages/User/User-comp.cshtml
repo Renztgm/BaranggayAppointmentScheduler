@@ -1,0 +1,70 @@
+﻿@page
+@model BaranggayAppointmentScheduler.Pages.User.User_GeneralModel
+@{
+    Layout = "_Layout";
+    DateTime today = DateTime.Today;
+    int daysUntilMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
+    DateTime monday = today.AddDays(daysUntilMonday);
+    string[] weekdays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+}
+
+<head>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="~/css/User-comp.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Page Title -->
+        <h2>Report</h2>
+
+        <!-- Main layout wrapper -->
+        <div class="dashboard">
+            <!-- Left side: Report form -->
+            <div class="appointment-form">
+                <h3>What is your concern?</h3>
+                <select>
+                    <option>Select a concern</option>
+                    <option>Filing Complain</option>
+                    <option>Blotter Report</option>
+                </select>
+
+                <!-- Address input -->
+                <input type="text" placeholder="Street address">
+                <input type="text" placeholder="Place Mark">
+
+                <!-- Contact info -->
+                <div class="contact-info">
+                    <input type="email" placeholder="Email">
+                    <input type="text" placeholder="Number">
+                </div>
+
+                <!-- Details textarea -->
+                <textarea placeholder="More Details about your concern"></textarea>
+
+                <!-- Book button -->
+                <button class="book-btn">Book</button>
+            </div>
+
+            <!-- Right side: History list -->
+            <div class="history">
+                <h4>History</h4>
+
+                <div class="history-item">
+                    <p><strong>January 17, 2025</strong></p>
+                    <p>Filing Complain - <span class="id-number">Maingay</span></p>
+                </div>
+
+                <div class="history-item">
+                    <p><strong>November 10, 2024</strong></p>
+                    <p>Blotter Report - <span class="id-number">Nanaga kasi 5k lang</span></p>
+                </div>
+
+                <div class="history-item">
+                    <p><strong>August 09, 2024</strong></p>
+                    <p>Filing Complain - <span class="id-number">Nagtapon ng Napkin</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
