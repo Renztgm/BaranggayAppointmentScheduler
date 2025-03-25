@@ -1,0 +1,63 @@
+﻿@page
+@model BaranggayAppointmentScheduler.Pages.User.User_GeneralModel
+@{
+    }
+<head>
+    <link rel="stylesheet" href="~/css/Non-re.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="tracking-container">
+        <h2>Track Your Appointment</h2>
+        <form method="get" action="/User/Non-check">
+            <label for="trackingNumber">Enter Your Tracking Number:</label>
+            <input type="text" id="trackingNumber" name="trackingNumber" placeholder="Tracking Number" required>
+            <button type="submit" class="track-btn">Track</button>
+        </form>
+
+    </div>
+</body>
+
+<style>
+    .tracking-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+        .tracking-container h2 {
+            color: #007bff;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .tracking-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tracking-container input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+    .track-btn {
+        background: yellow;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+        .track-btn:hover {
+            background-color: #BFC93D;
+        }
+</style>
