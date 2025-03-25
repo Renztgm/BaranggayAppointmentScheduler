@@ -1,0 +1,127 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Table Container */
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* Fixed Table Header */
+thead {
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+thead th {
+    padding: 14px;
+    text-align: left;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Alternate Row Colors */
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Table Cell Styling */
+td, th {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+    word-wrap: break-word;
+}
+
+/* Status Label Styles */
+.status {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    min-width: 100px;
+}
+
+.status.pending {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.status.approved {
+    background-color: #28a745;
+    color: white;
+}
+
+.status.declined {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Button Styles */
+.button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease-in-out;
+    color: white;
+    text-transform: uppercase;
+}
+
+.button.view {
+    background-color: #17a2b8;
+}
+
+.button.edit {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.button.delete {
+    background-color: #dc3545;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+
+    .button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}

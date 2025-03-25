@@ -24,7 +24,7 @@
                 <input type="email" asp-for="Username" placeholder="Enter your email" required>
                 <label>Password</label>
                 <input type="password" asp-for="Password" placeholder="Enter your password" required>
-                <span class="error">@Model.ErrorMessage</span> <!-- Display error messages -->
+                <span class="error" style="color: red; text-align: center;">@Model.ErrorMessage</span> <!-- Display error messages -->
                 <a href="#">Forgot your password?</a>
                 <button type="submit" class="btn">LOG IN</button>
             </form>

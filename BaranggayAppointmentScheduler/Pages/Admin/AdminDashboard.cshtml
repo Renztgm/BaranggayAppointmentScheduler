@@ -1,12 +1,12 @@
 ﻿@page
 @model BaranggayAppointmentScheduler.Pages.Admin.AdminDashboardModel
 @{
-    Layout = "_Layout";
+    Layout = "_AdminLayout";
 }
 
 <head>
     <title>Admin Dashboard</title>
-	<link rel="stylesheet" href="~/css/admin-dashboard.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/admin-dashboard.css" asp-append-version="true" />
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -16,29 +16,29 @@
 
         <div class="dashboard">
             <div class="card-container">
-                <button class="card" onclick="alert('General Button Clicked!')">
+                <a href="/Admin/Categories/General-Admin" class="card">
                     <span class="title">General</span>
                     <span class="number">@Model.GeneralCount</span>
                     <p>Need Barangay ID?</p>
-                </button>
+                </a>
 
-                <button class="card" onclick="alert('Health Button Clicked!')">
+                <a href="/Admin/Categories/Health_Admin" class="card">
                     <span class="title">Health</span>
                     <span class="number">@Model.HealthCount</span>
                     <p>Check Up?</p>
-                </button>
+                </a>
 
-                <button class="card" onclick="alert('Report Button Clicked!')">
+                <a href="/Admin/Categories/Report_Admin" class="card">
                     <span class="title">Report</span>
                     <span class="number">@Model.ReportCount</span>
                     <p>Complaint?</p>
-                </button>
+                </a>
 
-                <button class="card" onclick="alert('Business Button Clicked!')">
+                <a href="/Admin/Categories/Business_Admin" class="card">
                     <span class="title">Business</span>
                     <span class="number">@Model.BusinessCount</span>
                     <p>Business Permit?</p>
-                </button>
+                </a>
             </div>
 
             <div class="stats-container">
@@ -72,5 +72,3 @@
         });
     });
 </script>
-
-

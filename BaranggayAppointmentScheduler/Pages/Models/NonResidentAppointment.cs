@@ -4,17 +4,35 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BaranggayAppointmentScheduler.Models
 {
-    [Table("non_resident_appointments")] // Map to the correct table
+    [Table("nonresident_appointments")]
     public class NonResidentAppointment
     {
         [Key]
-        [Column("id")]  // Ensure the correct column mapping
-        public int Id { get; set; }
+        [Column("appointment_id")]
+        public long ID { get; set; } // BIGINT
 
-        [Column("name")]  // Example column, update as needed
-        public string Name { get; set; }
+        [Column("guest_id")]
+        public int UserID { get; set; } // INT
 
-        [Column("appointment_date")]  // Example column, update as needed
-        public DateTime AppointmentDate { get; set; }
+        [Column("name")]
+        public string Name { get; set; } // VARCHAR/NVARCHAR
+
+        [Column("email")]
+        public string Email { get; set; } // VARCHAR
+
+        [Column("phone")]
+        public string Phone { get; set; } // VARCHAR
+
+        [Column("appointment_date")]
+        public DateTime AppointmentDate { get; set; } // DATE
+
+        [Column("appointment_time")]
+        public TimeSpan AppointmentTime { get; set; } // TIME
+
+        [Column("non_resident_service")]
+        public string NonResidentService { get; set; } // VARCHAR
+
+        [Column("status")]
+        public string Status { get; set; } // VARCHAR
     }
 }

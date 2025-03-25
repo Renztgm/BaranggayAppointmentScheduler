@@ -5,27 +5,27 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('C:\Users\Thencer\Pictures\bar_bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat:
+    background: url('/css/bar_bg.png') no-repeat center center/cover;
+    margin: 0;
 }
 
 /* Container */
 .container {
     display: flex;
-    width: 70%; /* Increased width */
-    height: 70%; /* Increased height */
+    flex-direction: row;
+    width: 80%;
+    max-width: 900px;
+    height: 80vh;
     background: linear-gradient(to right, #f5f8e7, #e6e8d3);
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     overflow: hidden;
 }
 
 /* Sections */
 .login-section, .signup-section {
     width: 50%;
-    padding: 50px; /* Increased padding */
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,68 +38,74 @@ body {
 }
 
 h2 {
-    font-size: 28px; /* Increased heading size */
+    font-size: 24px;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
 p {
-    font-size: 18px; /* Increased text size */
+    font-size: 16px;
     margin-bottom: 10px;
 }
 
+/* Social Login */
 .social-icons {
     display: flex;
-    gap: 15px; /* Increased spacing */
+    gap: 10px;
     margin-bottom: 15px;
 }
 
 .social-btn {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border: none;
     background: white;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 22px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Form */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Increased spacing */
+    gap: 12px;
     width: 100%;
-    max-width: 300px; /* Increased width */
+    max-width: 280px;
 }
 
 label {
-    font-size: 18px; /* Bigger labels */
+    font-size: 16px;
     font-weight: bold;
+    text-align: left;
 }
 
 input {
-    padding: 12px; /* Bigger padding */
-    font-size: 18px; /* Bigger text */
+    padding: 10px;
+    font-size: 16px;
     width: 100%;
-    border: 2px solid #aaa;
-    border-radius: 8px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-a {
-    font-size: 16px; /* Increased text size */
-    color: #555;
-    text-decoration: none;
-}
+    input:focus {
+        border-color: #000;
+    }
 
+/* Buttons */
 .btn {
-    margin-top: 15px;
-    padding: 12px 25px; /* Bigger buttons */
-    font-size: 18px; /* Bigger text */
+    margin-top: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
     border: 2px solid black;
     background: none;
     cursor: pointer;
-    border-radius: 25px;
+    border-radius: 20px;
     font-weight: bold;
+    transition: all 0.3s;
 }
 
     .btn:hover {
@@ -110,4 +116,29 @@ a {
 /* Signup Section */
 .signup-section {
     background: #e6e8d3;
+}
+
+    .signup-section hr {
+        width: 80%;
+        margin: 15px 0;
+        border: 1px solid #bbb;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .login-section, .signup-section {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .signup-section {
+        border-top: 1px solid #bbb;
+    }
 }

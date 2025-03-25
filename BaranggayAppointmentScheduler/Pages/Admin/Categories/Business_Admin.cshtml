@@ -1,0 +1,55 @@
+﻿@page
+@model BaranggayAppointmentScheduler.Pages.Admin.Categories.Business_AdminModel
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/categories-tables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h2 style="text-align: center; margin-bottom: 20px;">Business Requests</h2>
+
+    <input type="text" id="searchInput" placeholder="Search..." class="search-bar">
+    <button id="searchButton">Search</button>
+
+    <table id="businessRequestsTable">
+        <thead>
+            <tr>
+                <th>Appointment ID</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Service Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in Model.BusinessAppointments)
+            {
+                <tr>
+                    <td>@appointment.ID</td>
+                    <td>@appointment.UserName</td>
+                    <td>@appointment.AppointmentDate.ToString("hh:mm tt")</td>
+                    <td>@appointment.AppointmentDate.ToString("yyyy-MM-dd")</td>
+                    <td class="status @appointment.Status.ToLower()">@appointment.Status</td>
+                    <td>Business Appointment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $("#searchButton").on("click", function () {
+                var value = $("#searchInput").val().toLowerCase();
+                $("#businessRequestsTable tbody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+</body>

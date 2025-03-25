@@ -8,13 +8,22 @@ namespace BaranggayAppointmentScheduler.Models
     public class HealthAppointment
     {
         [Key]
-        [Column("appointment_id")] // ✅ Ensure this matches your DB primary key column
-        public int ID { get; set; }
+        [Column("appointment_id")]
+        public long ID { get; set; } // BIGINT in SQL
 
-        [Column("user_id")] // ✅ Match with actual column names
-        public string UserID { get; set; }
+        [Column("user_id")]
+        public int UserID { get; set; } // INT in SQL
 
-        [Column("appointment_date")] // ✅ Example column
-        public DateTime AppointmentDate { get; set; }
+        [Column("appointment_date")]
+        public DateTime AppointmentDate { get; set; } // DATE in SQL
+
+        [Column("appointment_time")]
+        public TimeSpan AppointmentTime { get; set; } // TIME in SQL
+
+        [Column("status")]
+        public string Status { get; set; } // VARCHAR in SQL
+
+        public string UserName { get; set; } // ✅ Include UserName
     }
+
 }

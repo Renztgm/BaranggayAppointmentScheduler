@@ -15,6 +15,6 @@ namespace BaranggayAppointmentScheduler.Data
         public DbSet<GeneralAppointment> GeneralAppointments { get; set; }
         public DbSet<HealthAppointment> HealthAppointments { get; set; }
         public DbSet<NonResidentAppointment> NonResidentAppointments { get; set; }
-        public DbSet<ReportsAppointment> ReportsAppointments { get; set; }
+        public DbSet<ReportAppointment> ReportsAppointments { get; set; }
     }
 }

@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Baranggay Appointment Scheduler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-900 text-white p-5 h-screen fixed left-0 top-0">
+            <h2 class="text-2xl font-bold mb-6">Queueless - Admin</h2>
+            <nav>
+                <ul>
+                    <li class="mb-3"><a asp-page="/admin/AdminDashboard" class="flex items-center p-2 rounded hover:bg-gray-700">🏠 Home</a></li>
+                    <li class="mb-3"><a asp-page="/admin/AdminFeedback" class="flex items-center p-2 rounded hover:bg-gray-700">✉️ Feedback</a></li>
+                    <li class="mb-3"><a asp-page="/admin/AdminSettings" class="flex items-center p-2 rounded hover:bg-gray-700">⚙️ Settings</a></li>
+                    <li class="mb-3"><a asp-page="/admin/adminlogin" class="flex items-center p-2 rounded hover:bg-red-600">🚪 Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-64">
+            <!-- Top Bar -->
+            <div class="bg-white shadow-md p-4 fixed top-0 left-64 right-0 z-50 flex justify-between items-center">
+                <h1 class="text-3xl font-bold">@ViewData["Title"]</h1>
+                <div class="flex items-center gap-4">
+                    <span class="text-gray-700">Rahul Shaw</span>
+                    <img src="https://via.placeholder.com/40" alt="Profile" class="rounded-full">
+                </div>
+            </div>
+
+            <!-- Page Content -->
+            <div class="mt-20 p-8">
+                <main role="main" class="pb-3">
+                    @RenderBody()  <!-- ✅ Child page content will be rendered here -->
+                </main>
+            </div>
+        </main>
+    </div>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

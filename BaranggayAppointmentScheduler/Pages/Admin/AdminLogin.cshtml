@@ -9,29 +9,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
-    <link rel="stylesheet" href="~/css/admin-login.css">
+    <link rel="stylesheet" href="~/css/admin-login.css" asp-append-version="true">
 </head>
 <body>
     <div class="login-container">
-        <h2>Admin Login</h2>
-        <form method="post" asp-action="Login" asp-controller="Admin">
-            <div class="input-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="Username" required>
+        <div class="login-image"></div>
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <form method="post" asp-action="Login" asp-controller="Admin">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="Username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="Password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="forgot-password">
+                <a href="#">Forgot your password?</a>
             </div>
-
-            <div class="input-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="Password" required>
-            </div>
-
-            <button type="submit">Login</button>
-        </form>
-
-        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
-        {
-            <p class="error-message">@ViewData["ErrorMessage"]</p>
-        }
+            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+            {
+                <p class="error-message" style="color: red; text-align: center;">@ViewData["ErrorMessage"]</p>
+            }
+        </div>
     </div>
 </body>
 </html>
