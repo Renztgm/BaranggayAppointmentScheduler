@@ -1,0 +1,98 @@
+﻿@page
+@model BaranggayAppointmentScheduler.Pages.User.User_GeneralModel
+@{
+    DateTime today = DateTime.Today;
+    int daysUntilMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
+    DateTime monday = today.AddDays(daysUntilMonday);
+    string[] weekdays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+}
+<head>
+    <link rel="stylesheet" href="~/css/User-General.css" asp-append-version="true" />
+    <style>
+        .appointment-card {
+            background: white;
+            padding: 15px;
+            margin: 10px 100px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .appointment-card strong {
+                display: block;
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+
+            .appointment-card span {
+                font-size: 14px;
+            }
+
+        .appointment-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        h2 {
+            margin: 10px 60px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Appointments</h2>
+        <ul class="appointment-list" id="appointmentList">
+            <!-- Appointments will be dynamically loaded here -->
+        </ul>
+
+        <!-- Appointment Details Modal -->
+        <div id="appointmentDetailsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Appointment Details</h3>
+                <p><strong>Date:</strong> <span id="appointmentDate"></span></p>
+                <p><strong>Time:</strong> <span id="appointmentTime"></span></p>
+                <p><strong>Concern:</strong> <span id="appointmentConcern"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let appointments = [
+                { date: "March 27, 2025", time: "10:00-11:00am", concern: "Barangay ID" },
+                { date: "March 29, 2025", time: "2:00-3:00pm", concern: "Certificate of Indigency" }
+            ];
+
+            let appointmentList = document.getElementById("appointmentList");
+            let modal = document.getElementById("appointmentDetailsModal");
+            let closeModal = document.querySelector(".close");
+
+            appointments.forEach((appointment, index) => {
+                let li = document.createElement("li");
+                li.classList.add("appointment-card");
+                li.innerHTML = `
+                    <strong>${appointment.date}</strong>
+                    <span>${appointment.time} - <span style="color: red; font-weight: bold;">${appointment.concern}</span></span>
+                `;
+                li.setAttribute("data-index", index);
+                li.addEventListener("click", function () {
+                    document.getElementById("appointmentDate").textContent = appointment.date;
+                    document.getElementById("appointmentTime").textContent = appointment.time;
+                    document.getElementById("appointmentConcern").textContent = appointment.concern;
+                    modal.style.display = "block";
+                });
+                appointmentList.appendChild(li);
+            });
+
+            closeModal.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+
+            window.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
